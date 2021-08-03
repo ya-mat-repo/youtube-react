@@ -3,7 +3,8 @@ import React, { createContext, useReducer } from 'react'
 const initialState = {
   popular: [],
   related: [],
-  selected: {}
+  selected: {},
+  term: ''
 }
 
 const reducer = (state, action) => {
@@ -15,6 +16,8 @@ const reducer = (state, action) => {
     case 'SET_SELECTED':
       // initialStateに複数のプロパティがある場合は...stateで既に格納済みのstateを再度格納する必要がある
       return { ...state, selected: action.payload.selected }
+    case 'SET_TERM':
+      return {...state, term: action.payload.term}
     default:
       return state
   }
